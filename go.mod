@@ -1,4 +1,4 @@
-module github.com/go-bro/com
+module github.com/bro-go/com
 
 go 1.13
 
