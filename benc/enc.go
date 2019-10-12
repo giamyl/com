@@ -33,3 +33,13 @@ func PwdSlat(password, slat string) string {
 
 	return fmt.Sprintf("%x", encrypt)
 }
+
+// StrToMd5 将 []byte 加密成 md5
+func StrToMd5(b string) string {
+	return fmt.Sprintf("%x", md5.Sum([]byte(b)))
+}
+
+// StrToSha256 将 []byte 加密成 md5
+func StrToSha256(b string) string {
+	return fmt.Sprintf("%x", sha256.Sum256([]byte(b)))
+}
