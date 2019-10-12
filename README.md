@@ -22,6 +22,10 @@
 + [go-sql-driver/mysql](https://github.com/go-sql-driver/mysql) -
 [文档（英文）](https://github.com/go-sql-driver/mysql/wiki)
 
++ [sqlx](https://github.com/jmoiron/sqlx)
+
++ [squirrel](https://github.com/Masterminds/squirrel)
+
 + [jinzhu/gorm](https://github.com/jinzhu/gorm) -
 [文档](https://gorm.io/zh_CN/docs/)
 
