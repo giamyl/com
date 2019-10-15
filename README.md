@@ -38,3 +38,6 @@
 + [gofrs/uuid](https://github.com/gofrs/uuid)
 
 + [mozillazg/go-pinyin](https://github.com/mozillazg/go-pinyin)
+
++ [robfig/cron](https://github.com/robfig/cron) -
+[文档](https://godoc.org/github.com/robfig/cron#hdr-Usage)
