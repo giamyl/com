@@ -1,33 +1,53 @@
 package benc
 
 import (
-	"encoding/base64"
 	"fmt"
 	"testing"
 )
 
 func TestAes(t *testing.T) {
-	data := []byte("我是加密前的数据")
-	// 必须是 32 位的
-	key := []byte("12345678901234567890123456789012")
+	// 手动初始化
+	data := []byte("我是加密前的数据， Hello World!!!!")
+	key := []byte("123456")
 
-	res, err := AesEncrypt(data, key)
-	if err != nil {
-		t.Fatalf("加密失败： %v\n", err)
-	}
-
-	base64Str := base64.StdEncoding.EncodeToString(res)
-	fmt.Println(base64Str)
-
-	unBase64, err := base64.StdEncoding.DecodeString(base64Str)
+	// 手动初始化
+	nae, err := NewAesEncrypt(data, key)
 	if err != nil {
 		t.Fatal(err)
 	}
 
-	b, err := AesDecrypt(unBase64, key)
+	// 此时仍然可以更改
+	// nae.SetOriginData([]byte("xxxxxxxxxxxxxxxxx"))
+	// nae.SetKey([]byte("xxxxxxxxxxxxxxxxx"))
+	// err = nae.SetIV([]byte("qwertyuiopasdfgh"))
+
+	err = nae.CBCEncrypt()
 	if err != nil {
 		t.Fatal(err)
 	}
 
-	fmt.Println("解密后输出：", string(b))
+	base64Str := nae.GetCryptedDataBase64()
+
+	fmt.Println("加密前的数据： ", string(data))
+	fmt.Println("加密=========================================================")
+	fmt.Println("手动加密后的结果： : ", base64Str)
+	fmt.Println("iv: ", string(nae.GetIV()))
+
+	// 使用快捷函数
+	base64Str, err = AesEncToBase64(data, key)
+	if err != nil {
+		t.Fatal(err)
+	}
+	fmt.Println("快捷函数加密的结果： ", base64Str)
+	fmt.Println("")
+
+	// 将加密后的数据转换回来
+	fmt.Println("解密=========================================================")
+	res, err := AesDecFromBase64(base64Str, key)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	fmt.Println("解密后的数据： ", string(res))
+
 }
