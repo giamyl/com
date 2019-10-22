@@ -55,9 +55,9 @@ func newLevel() int {
 }
 
 var logger = log.New(defautWriter, "[debug]", log.LstdFlags|log.Llongfile)
-var loggerInfo = log.New(defautWriter, "[info]", log.LstdFlags|log.Llongfile)
-var loggerWarn = log.New(defautWriter, "[warn]", log.LstdFlags|log.Llongfile)
 var loggerErr = log.New(defautWriter, "[error]", log.LstdFlags|log.Llongfile)
+var loggerWarn = log.New(defautWriter, "[warn]", log.LstdFlags|log.Lshortfile)
+var loggerInfo = log.New(defautWriter, "[info]", log.LstdFlags)
 
 // Debug 模式的日志
 func Debug(values ...interface{}) {
