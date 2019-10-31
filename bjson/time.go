@@ -1,4 +1,4 @@
-package btime
+package bjson
 
 import (
 	"fmt"
