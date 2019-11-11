@@ -2,7 +2,6 @@
 package bstr
 
 import (
-	"fmt"
 	"math/rand"
 	"strconv"
 	"strings"
@@ -122,13 +121,8 @@ func RandNumber(length uint) string {
 
 // RandInt 获取纯数字的随机数
 func RandInt(length uint) (n int) {
-	for i := 0; i < 10; i++ {
-		n, _ = NewRandLetter().OnlyNumber().SetLen(length).RandProcess().ToInt()
-		fmt.Println("==========", i)
-		if n > 10*int(length) {
-			return
-		}
-	}
+	n, _ = NewRandLetter().SetLetters("123456789").
+		SetLen(length).RandProcess().ToInt()
 
 	return
 }
