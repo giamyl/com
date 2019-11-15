@@ -43,6 +43,11 @@ func (j *JSONTime) UnmarshalJSON(data []byte) (err error) {
 	return
 }
 
+// ToTime 转化成 go 的 Time 格式
+func (j JSONTime) ToTime() time.Time {
+	return time.Time(j)
+}
+
 // JSONDate 实现 json 序列化的时间格式
 type JSONDate time.Time
 
@@ -57,4 +62,9 @@ func (j *JSONDate) UnmarshalJSON(data []byte) (err error) {
 	now, err := time.ParseInLocation(`"`+DateFormat+`"`, string(data), time.Local)
 	*j = JSONDate(now)
 	return
+}
+
+// ToTime 实现它的json序列化方法
+func (j JSONDate) ToTime() time.Time {
+	return time.Time(j)
 }
