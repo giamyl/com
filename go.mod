@@ -1,4 +1,4 @@
-module github.com/bro-go/com
+module github.com/giamyl/com
 
 go 1.13
 
